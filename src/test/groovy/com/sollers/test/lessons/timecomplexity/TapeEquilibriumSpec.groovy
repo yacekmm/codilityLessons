@@ -21,4 +21,15 @@ class TapeEquilibriumSpec extends Specification {
         then:
         result == 1
     }
+
+    def "tapeEq two element"(){
+        given:
+
+
+        when:
+        def result = tapeEq.solution([1, 1] as int[])
+
+        then:
+        result == 0
+    }
 }

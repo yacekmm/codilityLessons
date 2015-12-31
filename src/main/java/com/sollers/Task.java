@@ -104,4 +104,22 @@ public class Task {
     private void logIncrementation(int i, int j, int[][] a, String tag) {
         System.out.println("adding\t " + i + "\t" + j + "\t[ " + a[i][j] + " ]\t" + tag);
     }
+
+    public int solutionBinaryGap(int N){
+        int maxResult = 0;
+        int partialResult = 0;
+        char ZERO = '0';
+        String binaryString = Integer.toBinaryString(N);
+
+        for (char c: binaryString.toCharArray()) {
+            if(ZERO == c){
+                partialResult ++;
+            }else{
+                maxResult = Math.max(partialResult, maxResult);
+                partialResult = 0;
+            }
+        }
+
+        return maxResult;
+    }
 }

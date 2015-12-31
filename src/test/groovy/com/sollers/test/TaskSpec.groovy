@@ -4,13 +4,16 @@ import com.sollers.Task
 import spock.lang.Specification
 
 class TaskSpec extends Specification {
+
+    Task task;
+
     void setup() {
+        task = new Task()
 
     }
 
     def "Run"() {
         given:
-        Task task = new Task()
 
 
         when:
@@ -18,5 +21,16 @@ class TaskSpec extends Specification {
 
         then:
         result == 4
+    }
+
+    def "binaryGap"(){
+        given:
+
+
+        when:
+        def result = task.solutionBinaryGap(1041)
+
+        then:
+        result == 5
     }
 }

@@ -1,4 +1,4 @@
-package com.sollers.lessons;
+package com.sollers.lessons.array;
 
 import java.util.HashSet;
 import java.util.Set;

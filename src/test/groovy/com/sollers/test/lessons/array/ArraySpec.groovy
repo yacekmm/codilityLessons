@@ -1,5 +1,6 @@
-package com.sollers.lessons
+package com.sollers.test.lessons.array
 
+import com.sollers.lessons.array.Array
 import spock.lang.Specification
 
 class ArraySpec extends Specification {

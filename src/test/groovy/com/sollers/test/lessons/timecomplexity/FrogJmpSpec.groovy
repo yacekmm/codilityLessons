@@ -17,5 +17,7 @@ class FrogJmpSpec extends Specification {
         where:
         X   |   Y   |   D   |   result
         10  |   85  |   30  |   3
+        10  |   10  |   30  |   0
+        10  |   40  |   30  |   1
     }
 }

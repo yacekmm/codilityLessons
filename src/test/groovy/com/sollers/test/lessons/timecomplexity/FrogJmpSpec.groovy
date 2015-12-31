@@ -1,0 +1,21 @@
+package com.sollers.test.lessons.timecomplexity
+
+import com.sollers.lessons.timecomplexity.FrogJmp
+import spock.lang.Specification
+
+class FrogJmpSpec extends Specification {
+    FrogJmp sut
+
+    void setup() {
+        sut = new FrogJmp()
+    }
+
+    def "Solution params"() {
+        expect:
+        sut.solution(X, Y, D) == result
+
+        where:
+        X   |   Y   |   D   |   result
+        10  |   85  |   30  |   3
+    }
+}

@@ -71,24 +71,33 @@ Elements of input arrays can be modified.
 
  */
 
-import java.util.Arrays;
-
 public class MaxCounters {
 
     public int[] solution(int N, int[] A) {
 
         int[] counters = new int[N];
         int maxCounter = 0;
+        int maxCounterToSet = 0;
 
         for (int i = 0; i < A.length; i++) {
             int elementValue = A[i];
             if(elementValue <= N){
                 int elementValueIndex = A[i] - 1;
-                counters[elementValueIndex]++;
+                int counterValue = counters[elementValueIndex];
+                if(counterValue < maxCounterToSet){
+                    counters[elementValueIndex] = maxCounterToSet + 1;
+                }else {
+                    counters[elementValueIndex]++;
+                }
                 maxCounter = Math.max(maxCounter, counters[elementValueIndex]);
             }else{
-                final int finalMaxCounter = maxCounter;
-                Arrays.setAll(counters, item -> finalMaxCounter);
+                maxCounterToSet = maxCounter;
+            }
+        }
+
+        for (int i = 0; i < counters.length; i++) {
+            if(counters[i] < maxCounterToSet){
+                counters[i] = maxCounterToSet;
             }
         }
 

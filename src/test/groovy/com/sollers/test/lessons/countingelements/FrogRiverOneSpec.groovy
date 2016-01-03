@@ -21,5 +21,6 @@ class FrogRiverOneSpec extends Specification {
         1   |   [333, 1]                    |   1
         1   |   [333, 2]                    |   -1
         1   |   [1, 1]                      |   0
+        3   |   [1, 3, 1, 3, 2, 1, 3]       |   4
     }
 }

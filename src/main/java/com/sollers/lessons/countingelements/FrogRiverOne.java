@@ -71,12 +71,15 @@ public class FrogRiverOne {
             }
         }
 
+        int max = -1;
         for (int i = 0; i < earliestTimesForPositions.length; i++) {
             if (earliestTimesForPositions[i] == null && i < X) {
                 return -1;
+            }else{
+                max = Math.max(max, earliestTimesForPositions[i]);
             }
         }
 
-        return earliestTimesForPositions[X - 1];
+        return Math.max(earliestTimesForPositions[X - 1], max);
     }
 }

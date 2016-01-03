@@ -1,4 +1,4 @@
-group 'com.sollers'
+group 'com.codility'
 version '1.0-SNAPSHOT'
 
 apply plugin: 'groovy'

@@ -2,6 +2,7 @@ package com.sollers.lessons.countingelements;
 
 /*
 
+Find the earliest time when a frog can jump to the other side of a river.
 
 A small frog wants to get to the other side of a river. The frog is currently located at position 0, and wants to get to position X. Leaves fall from a tree onto the surface of the river.
 
@@ -56,23 +57,26 @@ Elements of input arrays can be modified.
  */
 public class FrogRiverOne {
 
-    public int solution(int X, int[] A){
+    public int solution(int X, int[] A) {
 
-        Integer[] positionsFilled = new Integer[X+1];
+        Integer[] earliestTimesForPositions = new Integer[X];
 
-        for (int i = 0; i < A.length; i++) {
-            Integer positionToFill = positionsFilled[A[i]];
-            if((positionToFill == null || i < positionToFill) && A[i] <= X) {
-                System.out.println("filling: positionsFilled[" + A[i] + "] = " + i);
-                positionsFilled[A[i]] = i;
+        for (int time = 0; time < A.length; time++) {
+            int position = A[time];
+            if (position <= X) {
+                Integer currentTime = earliestTimesForPositions[position - 1];
+                if (currentTime == null || time < currentTime) {
+                    earliestTimesForPositions[position - 1] = time;
+                }
             }
         }
 
-        for (int i = 1; i < positionsFilled.length; i++) {
-            if(positionsFilled[i] == null && i < X){
+        for (int i = 0; i < earliestTimesForPositions.length; i++) {
+            if (earliestTimesForPositions[i] == null && i < X) {
                 return -1;
             }
         }
-        return positionsFilled[X];
+
+        return earliestTimesForPositions[X - 1];
     }
 }

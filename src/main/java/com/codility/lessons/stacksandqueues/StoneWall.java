@@ -26,11 +26,12 @@ public class StoneWall {
                 result++;
             }else if(currentHeight < recentHeight){
                 Integer popped = stack.pop();
-                if(recentHeight == currentHeight - popped){
+                if(recentHeight - currentHeight == popped){
                     // ???
                 }else if( recentHeight - currentHeight < popped){
-                    stack.push(popped);
-                    stack.push(recentHeight - currentHeight);
+//                    stack.push(popped);
+//                    stack.push(recentHeight - currentHeight);
+                    stack.push(currentHeight);
                     result++;
                 }else if(recentHeight - currentHeight > popped){
                     stack.push(currentHeight);
@@ -38,14 +39,10 @@ public class StoneWall {
                 }
                 recentHeight = currentHeight;
             }
-
-            if(currentHeight < recentHeight){
-                result++;
-                recentHeight = currentHeight;
-                stack.pop();
-            }
+            System.out.println("Stack size: " + stack.size());
+            System.out.println("result: " + result);
         }
-
+        System.out.println("------\n");
         return result;
     }
 }

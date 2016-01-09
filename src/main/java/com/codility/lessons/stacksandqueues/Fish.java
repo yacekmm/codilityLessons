@@ -60,28 +60,28 @@ public class Fish {
 
     public int solution(int[] A, int[] B){
 
-        Stack<Integer> downstreamStack = new Stack<>();
-        int upstreamAliveCount = 0;
+        Stack<Integer> upstreamStack = new Stack<>();
+        int downstreamAliveCount = 0;
 
-        for (int i = 0; i < A.length; i++) {
+        for (int i = A.length - 1; i >= 0; i--) {
 
-            if(B[i] == 1){
-                downstreamStack.push(A[i]);
-            }else if(B[i] == 0){
-                if(!downstreamStack.isEmpty()){
-                    Integer downstreamFish = downstreamStack.pop();
-                    if(downstreamFish > A[i]){
-                        downstreamStack.push(downstreamFish);
-                    } else {
-                        upstreamAliveCount++;
+            if(B[i] == 0){
+                upstreamStack.push(A[i]);
+            } else {
+                while(!upstreamStack.isEmpty()){
+                    Integer upstreamFish = upstreamStack.pop();
+                    if( upstreamFish > A[i] ){
+                        upstreamStack.push(upstreamFish);
+                        break;
                     }
-                }else{
-                    upstreamAliveCount++;
+                }
+                if(upstreamStack.isEmpty()){
+                    downstreamAliveCount++;
                 }
             }
         }
 
-        return downstreamStack.size() + upstreamAliveCount;
+        return upstreamStack.size() + downstreamAliveCount;
     }
 
 }

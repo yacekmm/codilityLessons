@@ -17,7 +17,7 @@ class StoneWallSpec extends Specification {
         2   | [2, 3, 3, 2]
         3   | [2, 4, 4, 3]
         3   | [2, 4, 4, 1]
-        3   | [3, 2, 1]
+        3   | [3, 2, 1] // test fails
         7   | [8, 8, 5, 7, 9, 8, 7, 4, 8]
     }
 

@@ -9,13 +9,14 @@ class ChocolatesByNumbersSpec extends Specification {
         new ChocolatesByNumbers().solution(N, M ) == res
 
         where:
-        res | N     | M
-        1   | 1     | 1
-        2   | 2     | 1
-        3   | 3     | 1
-        1   | 3     | 3
-        3   | 3     | 2
-        2   | 2     | 3
-        5   | 10    | 4
+        res         | N             | M
+        1           | 1             | 1
+        2           | 2             | 1
+        3           | 3             | 1
+        1           | 3             | 3
+        3           | 3             | 2
+        2           | 2             | 3
+        1000000000  | 1000000000    | 1
+        5           | 10            | 4
     }
 }

@@ -39,19 +39,16 @@ Complexity:
  */
 public class ChocolatesByNumbers {
 
-    public int solution(int N, int M){
+    public int solution(int N, int M) {
 
-        boolean[] eaten = new boolean[N];
+        return N / findGcd(N, M);
+    }
 
-        int X = 0;
-        int counter = 0;
-        while( !eaten[X] ){
-            eaten[X] = true;
-            X += M;
-            X %= N;
-            counter++;
+    private int findGcd(int n, int m) {
+        if (n % m == 0)
+            return m;
+        else {
+            return findGcd(m, n % m);
         }
-
-        return counter;
     }
 }

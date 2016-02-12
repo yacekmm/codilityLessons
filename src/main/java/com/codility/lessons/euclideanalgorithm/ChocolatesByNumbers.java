@@ -40,7 +40,6 @@ Complexity:
 public class ChocolatesByNumbers {
 
     public int solution(int N, int M) {
-
         return N / findGcd(N, M);
     }
 

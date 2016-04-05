@@ -17,11 +17,23 @@ class DwarfsRaftingSpec extends Specification {
 
     def "test getDwarfsCount"() {
         expect:
-        new DwarfsRafting().getDwarfsCount(rowStart, rowEnd, colStart, colEnd, dwarfsPos) == result
+        new DwarfsRafting().getDwarfsCount(rowStart, rowEnd, colStart, colEnd, dwarfsPos as String[]) == result
 
         where:
         result  | rowStart  | rowEnd    | colStart  | colEnd    | dwarfsPos
-        0       | 1         | 1         | 1         | 1         | ""
+        //1 x 1 boat
+        0       | 1         | 1         | 1         | 1         | [""]
+        1       | 1         | 1         | 1         | 1         | ["1A"]
+        0       | 1         | 1         | 1         | 1         | ["1B"]
+        0       | 1         | 1         | 1         | 1         | ["2A"]
+        0       | 1         | 1         | 1         | 1         | ["2B"]
+        // 2 x 2 boat
+        1       | 1         | 2         | 1         | 2         | ["2B"]
+        // multiple dwarfs
+        2       | 1         | 2         | 1         | 2         | ["1A", "2B"]
+        3       | 1         | 2         | 1         | 2         | ["1A", "1B", "2B"]
+        4       | 1         | 2         | 1         | 2         | ["1A", "1B", "2A", "2B"]
+        4       | 1         | 2         | 1         | 2         | ["1A", "1B", "2A", "2B", "2C"]
     }
 
 

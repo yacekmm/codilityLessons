@@ -17,13 +17,15 @@ public class DwarfsRafting {
         String[] barrelsPositions = S.split(POSITIONS_SEPARATOR);
         String[] dwarfsPositions = T.split(POSITIONS_SEPARATOR);
 
-        int freeSitsInLeftFront = getFreeSitsCount(1, N/2, 1, N/2, barrelsPositions, dwarfsPositions);
-        int dwarfsCountInLeftFront = getDwarfsCount(1, N/2, 1, N/2, dwarfsPositions);
+        int boatTotalSize = N * N;
+        int dwarfsCountInLeftFront = getItemsOnSeatsCount(1, N/2, 1, N/2, dwarfsPositions);
+        int barrelsCountInLeftFront = getItemsOnSeatsCount(1, N/2, 1, N/2, barrelsPositions);
+        int freeSitsInLeftFront = boatTotalSize / 4 - dwarfsCountInLeftFront - barrelsCountInLeftFront;
 
         return IMPOSSIBLE_RESULT;
     }
 
-    public int getDwarfsCount(int rowStart, int rowEnd, int colStart, int colEnd, String[] dwarfsPositions) {
+    public int getItemsOnSeatsCount(int rowStart, int rowEnd, int colStart, int colEnd, String[] dwarfsPositions) {
         int result = 0;
 
         for (String pos: dwarfsPositions) {
@@ -41,7 +43,7 @@ public class DwarfsRafting {
         return result;
     }
 
-    private int getFreeSitsCount(int rowStart, int rowEnd, int colStart, int colEnd, String[] barrelsPositions, String[] dwarfsPositions) {
+    private int getFreeSitsCount(int rowStart, int rowEnd, int colStart, int colEnd, String[] barrelsPositions, int dwarfsCount) {
         return 0;
     }
 

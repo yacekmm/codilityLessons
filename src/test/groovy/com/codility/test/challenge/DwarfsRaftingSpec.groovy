@@ -17,7 +17,7 @@ class DwarfsRaftingSpec extends Specification {
 
     def "test getDwarfsCount"() {
         expect:
-        new DwarfsRafting().getDwarfsCount(rowStart, rowEnd, colStart, colEnd, dwarfsPos as String[]) == result
+        new DwarfsRafting().getItemsOnSeatsCount(rowStart, rowEnd, colStart, colEnd, dwarfsPos as String[]) == result
 
         where:
         result  | rowStart  | rowEnd    | colStart  | colEnd    | dwarfsPos

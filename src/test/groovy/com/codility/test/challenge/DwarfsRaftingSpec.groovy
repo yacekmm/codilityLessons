@@ -1,7 +1,7 @@
 package com.codility.test.challenge
 
 import com.codility.challenge.BoatSector
-import com.codility.challenge.DwarfsRafting
+import com.codility.challenge.Solution
 import spock.lang.Specification
 
 import java.awt.*
@@ -9,11 +9,14 @@ import java.awt.*
 class DwarfsRaftingSpec extends Specification {
     def "test solution"() {
         expect:
-        new DwarfsRafting().solution(N, S, T) == result
+        new Solution().solution(N, S, T) == result
 
         where:
-        result  | N     | S     | T
-        4       | 2     | ""    | ""
+        result  | N     | S                     | T
+        0       | 2     | "1A 1B 2A 2B"         | ""
+        0       | 2     | ""                    | "1A 1B 2A 2B"
+        -1      | 2     | "1A 1B 2A"            | "2B"
+        4       | 2     | ""                    | ""
     }
 
     def "test getDwarfsCount"() {

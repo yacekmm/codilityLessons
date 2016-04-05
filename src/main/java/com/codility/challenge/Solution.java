@@ -31,6 +31,9 @@ public class Solution {
                 leftFront.dwarfsCount == leftBack.dwarfsCount &&
                 leftFront.dwarfsCount == rightBack.dwarfsCount;
 
+//        boolean dwarfsAreBalanced = leftFront.dwarfsCount + leftBack.dwarfsCount == rightBack.dwarfsCount + rightFront.dwarfsCount &&
+//                leftBack.dwarfsCount + rightBack.dwarfsCount == leftFront.dwarfsCount + rightFront.dwarfsCount;
+
         if (!hasFreeSits) {
             if (dwarfsAreBalanced) {
                 return 0;

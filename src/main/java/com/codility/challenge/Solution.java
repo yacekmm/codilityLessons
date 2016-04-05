@@ -31,20 +31,30 @@ public class Solution {
                 leftFront.dwarfsCount == leftBack.dwarfsCount &&
                 leftFront.dwarfsCount == rightBack.dwarfsCount;
 
+        if (!hasFreeSits) {
+            if (dwarfsAreBalanced) {
+                return 0;
+            } else {
+                return IMPOSSIBLE_RESULT;
+            }
+        }
+
         int dwarfsAdded = 0;
         boolean running = true;
-        while(running) {
-            if (!hasFreeSits) {
-                if (dwarfsAreBalanced) {
+        while (running) {
+            if (dwarfsAreBalanced) {
+                if (addDwarf()) {
+                    dwarfsAdded += 4;
+                } else {
                     return dwarfsAdded;
+                }
+            } else {
+                int balanceDwarfs = balanceDwarfs();
+                if (balanceDwarfs > 0) {
+                    dwarfsAdded += balanceDwarfs;
+                    dwarfsAreBalanced = true;
                 } else {
                     return IMPOSSIBLE_RESULT;
-                }
-            }else {
-                if(addDwarf()){
-                    dwarfsAdded += 4;
-                }else {
-                    return dwarfsAdded;
                 }
             }
 
@@ -52,6 +62,26 @@ public class Solution {
 
 
         return -10;
+    }
+
+    private int balanceDwarfs() {
+        int[] counterArray = {leftFront.dwarfsCount, rightFront.dwarfsCount, leftBack.dwarfsCount, rightBack.dwarfsCount};
+        Arrays.sort(counterArray);
+        int maxCount = counterArray[3];
+
+        int lfAddded = leftFront.addDwarfsToBalance(maxCount);
+        int rfAdded = rightFront.addDwarfsToBalance(maxCount);
+        int lbAdded = leftBack.addDwarfsToBalance(maxCount);
+        int rbAddded = rightBack.addDwarfsToBalance(maxCount);
+        if (lfAddded >= 0 &&
+                rfAdded >= 0 &&
+                lbAdded >= 0 &&
+                rbAddded >= 0) {
+            return lfAddded + rfAdded + lbAdded + rbAddded;
+        } else {
+            return -1;
+        }
+
     }
 
     private boolean addDwarf() {
@@ -123,12 +153,22 @@ class BoatSector {
     }
 
     public boolean addDwarf() {
-        if(hasFreeSits()){
+        if (hasFreeSits()) {
             freeSitsCount--;
             return true;
-        }else{
+        } else {
             return false;
         }
 
+    }
+
+    public int addDwarfsToBalance(int expectedCountToReach) {
+        int dwarfsToAdd = expectedCountToReach - dwarfsCount;
+        if (dwarfsToAdd > freeSitsCount) {
+            return -1;
+        } else {
+            freeSitsCount -= dwarfsToAdd;
+            return dwarfsToAdd;
+        }
     }
 }

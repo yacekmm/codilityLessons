@@ -17,6 +17,8 @@ class DwarfsRaftingSpec extends Specification {
         0       | 2     | ""                    | "1A 1B 2A 2B"
         -1      | 2     | "1A 1B 2A"            | "2B"
         4       | 2     | ""                    | ""
+        6       | 4     | "1B 1C 4B 1D 2A"      | "3B 2D"
+        2       | 2     | "2A"                  | ""
     }
 
     def "test getDwarfsCount"() {

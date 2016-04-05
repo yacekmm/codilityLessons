@@ -1,5 +1,6 @@
 package com.codility.test.challenge
 
+import com.codility.challenge.BoatSector
 import com.codility.challenge.DwarfsRafting
 import spock.lang.Specification
 
@@ -17,7 +18,7 @@ class DwarfsRaftingSpec extends Specification {
 
     def "test getDwarfsCount"() {
         expect:
-        new DwarfsRafting().getItemsOnSeatsCount(rowStart, rowEnd, colStart, colEnd, dwarfsPos as String[]) == result
+        new BoatSector().getItemsOnSeatsCount(rowStart, rowEnd, colStart, colEnd, dwarfsPos as String[]) == result
 
         where:
         result  | rowStart  | rowEnd    | colStart  | colEnd    | dwarfsPos
@@ -39,7 +40,7 @@ class DwarfsRaftingSpec extends Specification {
 
     def "test getIntPosition"() {
         expect:
-        new DwarfsRafting().getIntPosition(stringPos) == result
+        new BoatSector().getIntPosition(stringPos) == result
 
         where:
         result          | stringPos
@@ -47,5 +48,6 @@ class DwarfsRaftingSpec extends Specification {
         new Point(1,2)  | "1B"
         new Point(2,2)  | "2B"
         new Point(22,2) | "22B"
+        new Point(22,26)| "22Z"
     }
 }

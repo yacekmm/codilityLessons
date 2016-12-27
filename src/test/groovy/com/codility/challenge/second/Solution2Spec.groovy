@@ -2,6 +2,8 @@ package com.codility.challenge.second
 
 import spock.lang.Specification
 
+import java.time.LocalDateTime
+
 class Solution2Spec extends Specification {
     Solution2 solution
 
@@ -54,21 +56,21 @@ class Solution2Spec extends Specification {
                 "Warsaw1.png"
     }
 
-//    def "parses date"() {
-//        expect:
-//        Solution2.Photo.parseDate(S) == result
-//
-//        where:
-//        S                     | result
-//        "2013-09-05 14:18:15" | LocalDateTime.of(2013, 9, 5, 14, 18, 15)
-//    }
-//
-//    def "parses photo"() {
-//        expect:
-//        Solution2.Photo.fromString(input) == result
-//
-//        where:
-//        input                                | result
-//        "a.png, Warsaw, 2016-02-13 13:33:50" | new Solution2.Photo("png", "Warsaw", LocalDateTime.of(2016, 02, 13, 13, 33, 50), s)
-//    }
+    def "parses date"() {
+        expect:
+        Solution2.Photo.parseDate(S) == result
+
+        where:
+        S                     | result
+        "2013-09-05 14:18:15" | LocalDateTime.of(2013, 9, 5, 14, 18, 15)
+    }
+
+    def "parses photo"() {
+        expect:
+        Solution2.Photo.fromString(input) == result
+
+        where:
+        input                                | result
+        "a.png, Warsaw, 2016-02-13 13:33:50" | new Solution2.Photo("png", "Warsaw", LocalDateTime.of(2016, 02, 13, 13, 33, 50), "a.png, Warsaw, 2016-02-13 13:33:50")
+    }
 }

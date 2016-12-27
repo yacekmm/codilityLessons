@@ -30,13 +30,13 @@ public class Solution2 {
             }
         }
 
-        Map<String, String> collect = groupedByCities.values().stream()
+        Map<String, String> oldNameToNew = groupedByCities.values().stream()
                 .flatMap(x -> x.stream())
                 .collect(Collectors.toMap(Photo::getOriginal, Photo::getResult));
 
         StringBuilder sb = new StringBuilder();
         Arrays.stream(strings)
-                .map(s -> collect.get(s))
+                .map(s -> oldNameToNew.get(s))
                 .forEach(sb::append);
 
         return sb.toString().trim();

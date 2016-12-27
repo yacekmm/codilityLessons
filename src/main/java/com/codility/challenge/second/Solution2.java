@@ -4,6 +4,7 @@ package com.codility.challenge.second;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -14,28 +15,22 @@ public class Solution2 {
     public String solution(String S) {
         String[] strings = S.split("\n");
 
-        Map<String, List<Photo>> counting = Arrays.stream(strings)
+        Map<String, List<Photo>> groupedByCities = Arrays.stream(strings)
                 .map(s -> Photo.fromString(s))
                 .collect(Collectors.groupingBy(Photo::getCity));
 
-        for (String city : counting.keySet()) {
-            List<Photo> photos = counting.get(city);
-            photos.sort((photo1, photo2) -> photo1.dateTime.isAfter(photo2.dateTime) ? 1 : -1);
+        for (String city : groupedByCities.keySet()) {
+            List<Photo> photos = groupedByCities.get(city);
+            photos.sort(Comparator.comparing(photo -> photo.dateTime));
 
             Integer count = photos.size();
             int digits = count.toString().length();
             for (int i = 0; i < count; i++) {
-                StringBuilder sb = new StringBuilder();
-                sb.append(photos.get(i).city)
-                        .append(String.format("%0" + digits + "d", i+1))
-                        .append(".")
-                        .append(photos.get(i).extension)
-                        .append("\n");
-                photos.get(i).setResult(sb.toString());
+                photos.get(i).buildResultName(digits, i);
             }
         }
 
-        Map<String, String> collect = counting.values().stream()
+        Map<String, String> collect = groupedByCities.values().stream()
                 .flatMap(x -> x.stream())
                 .collect(Collectors.toMap(Photo::getOriginal, Photo::getResult));
 
@@ -121,8 +116,14 @@ public class Solution2 {
                     '}';
         }
 
-        public void setResult(String result) {
-            this.result = result;
+        private void buildResultName(int digits, int i) {
+            StringBuilder sb = new StringBuilder();
+            sb.append(city)
+                    .append(String.format("%0" + digits + "d", i+1))
+                    .append(".")
+                    .append(extension)
+                    .append("\n");
+            this.result = sb.toString();
         }
     }
 

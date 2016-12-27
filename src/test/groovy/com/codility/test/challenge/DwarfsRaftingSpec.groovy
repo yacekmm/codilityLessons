@@ -1,7 +1,7 @@
 package com.codility.test.challenge
 
-import com.codility.challenge.BoatSector
-import com.codility.challenge.Solution
+import com.codility.challenge.first.BoatSector
+import com.codility.challenge.first.Solution
 import spock.lang.Specification
 
 import java.awt.*

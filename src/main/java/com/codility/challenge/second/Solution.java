@@ -27,20 +27,19 @@ public class Solution {
         }
     }
 
-    public int familiesForLeftColumn(int row, HashSet<String> seatsSet) {
-        if(seatsSet.contains(row + "A")
-                || seatsSet.contains(row + "B")
-                || seatsSet.contains(row + "C")){
-            return 0;
-        }else {
-            return 1;
-        }
+    private int familiesForLeftColumn(int row, HashSet<String> seatsSet) {
+        return familiesIn3SeatsColumn(row, seatsSet, "A", "B", "C");
     }
 
-    public int familiesForRightColumn(int row, HashSet<String> seatsSet) {
-        if(seatsSet.contains(row + "H")
-                || seatsSet.contains(row + "J")
-                || seatsSet.contains(row + "K")){
+
+    private int familiesForRightColumn(int row, HashSet<String> seatsSet) {
+        return familiesIn3SeatsColumn(row, seatsSet, "H", "J", "K");
+    }
+
+    private int familiesIn3SeatsColumn(int row, HashSet<String> seatsSet, String col1, String col2, String col3) {
+        if(seatsSet.contains(row + col1)
+                || seatsSet.contains(row + col2)
+                || seatsSet.contains(row + col3)){
             return 0;
         }else {
             return 1;

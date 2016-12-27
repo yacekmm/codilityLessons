@@ -10,7 +10,7 @@ class SolutionSpec extends Specification {
         solution = new Solution()
     }
 
-    def "Solution returns a result for left column"() {
+    def "Solution returns a result for LEFT column"() {
         expect:
         solution.solution(N, S + " 1H + 2H 1E 2E") == result
 
@@ -68,13 +68,24 @@ class SolutionSpec extends Specification {
         1 | "2D 1G" | 1
     }
 
+    def "Solution returns a result for ALL columns"() {
+        expect:
+        solution.solution(N, S) == result
+
+        where:
+        N | S       | result
+        1 | ""      | 3
+        1 | "1A"    | 2
+        1 | "1A 1E" | 1
+        1 | "1A 1E 1H"     | 0
+    }
+
     def "splits string to hashset"() {
         expect:
         solution.splitSeats(S) == result
 
         where:
         S       | result
-//        ""      | new HashSet<String>()
         "1A"    | ["1A"] as HashSet
         "1A 2B" | ["1A", "2B"] as HashSet
         "1A 1A" | ["1A"] as HashSet

@@ -13,9 +13,18 @@ public class Solution {
         for (int i = 1; i <= N; i++) {
             result += familiesForLeftColumn(i, seatsSet);
             result += familiesForRightColumn(i, seatsSet);
+            result += familiesForMiddleColumn(i, seatsSet);
         }
 
         return result;
+    }
+
+    private int familiesForMiddleColumn(int row, HashSet<String> seatsSet) {
+        if(seatsSet.contains(row + "E") || seatsSet.contains(row + "F") || (seatsSet.contains(row + "D") && seatsSet.contains(row + "G"))){
+            return 0;
+        }else {
+            return 1;
+        }
     }
 
     public int familiesForLeftColumn(int row, HashSet<String> seatsSet) {

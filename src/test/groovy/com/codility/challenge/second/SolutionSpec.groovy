@@ -12,7 +12,7 @@ class SolutionSpec extends Specification {
 
     def "Solution returns a result for left column"() {
         expect:
-        solution.solution(N, S + " 1H + 2H") == result
+        solution.solution(N, S + " 1H + 2H 1E 2E") == result
 
         where:
         N | S       | result
@@ -28,9 +28,9 @@ class SolutionSpec extends Specification {
         2 | "1A"    | 1
     }
 
-    def "Solution returns a result for right column"() {
+    def "Solution returns a result for RIGHT column"() {
         expect:
-        solution.solution(N, S + " 1A + 2A") == result
+        solution.solution(N, S + " 1A + 2A 1E 2E") == result
 
         where:
         N | S       | result
@@ -44,6 +44,28 @@ class SolutionSpec extends Specification {
         1 | "2J 2K" | 1
         2 | "2J 2K" | 1
         2 | "1H"    | 1
+    }
+
+
+    def "Solution returns a result for MIDDLE column"() {
+        expect:
+        solution.solution(N, S + " 1A 2A 3A 1H 2H 3H") == result
+
+        where:
+        N | S       | result
+        1 | ""      | 1
+        1 | "1E"    | 0
+        1 | "1F"    | 0
+        1 | "1D"    | 1
+        1 | "1G"    | 1
+        1 | "1D 1E" | 0
+        1 | "1D 1F" | 0
+        1 | "1D 1G" | 0
+        1 | "1E 1G" | 0
+        1 | "1F 1G" | 0
+        2 | "2D 1G" | 2
+        3 | "2D 2G" | 2
+        1 | "2D 1G" | 1
     }
 
     def "splits string to hashset"() {

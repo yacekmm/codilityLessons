@@ -46,16 +46,16 @@ public class Array {
 
      */
     public int solution(int[] A){
-        Set<Integer> occurenceCounter = new HashSet<Integer>();
+        Set<Integer> occurrenceCounter = new HashSet<>();
 
         for (int number: A) {
-            if(occurenceCounter.contains(number)){
-                occurenceCounter.remove(number);
+            if(occurrenceCounter.contains(number)){
+                occurrenceCounter.remove(number);
             }else{
-                occurenceCounter.add(number);
+                occurrenceCounter.add(number);
             }
         }
 
-        return occurenceCounter.iterator().next();
+        return occurrenceCounter.iterator().next();
     }
 }

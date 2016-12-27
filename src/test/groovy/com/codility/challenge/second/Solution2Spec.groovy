@@ -47,13 +47,13 @@ class Solution2Spec extends Specification {
                 "a.png, Radom, 2014-02-13 13:33:50\n" +
                 "a.png, Warsaw, 2013-02-13 13:33:50\n" +
                 "a.png, Krakow, 2012-02-13 13:33:50\n" +
-                "a.png, Warsaw, 2011-02-13 13:33:50" |
+                "a.jpg, Warsaw, 2011-02-13 13:33:50" |
                 "Radom2.png\n" +
                 "Warsaw3.png\n" +
                 "Radom1.png\n" +
                 "Warsaw2.png\n" +
                 "Krakow1.png\n" +
-                "Warsaw1.png"
+                "Warsaw1.jpg"
     }
 
     def "parses date"() {
